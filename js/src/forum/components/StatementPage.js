@@ -1,7 +1,6 @@
 import Page from 'flarum/components/Page';
 import IndexPage from 'flarum/components/IndexPage';
 import listItems from 'flarum/helpers/listItems';
-import app from 'flarum/app';
 
 export default class StatementPage extends Page {
   oninit(vnode) {
@@ -19,10 +18,6 @@ export default class StatementPage extends Page {
 
   onupdate(vnode) {
     super.onupdate(vnode);
-  }
-
-  head(){
-    return ;
   }
 
   async loadData(key = '', page = 1) {
@@ -51,6 +46,7 @@ export default class StatementPage extends Page {
   changePage(page) {
     if (page < 1 || page > this.totalPages) return;
     this.loadData(this.searchTerm, page);
+    window.scrollTo(0, 0);
   }
 
   view() {
@@ -62,9 +58,15 @@ export default class StatementPage extends Page {
           m('nav.IndexPage-nav.sideNav', m('ul', listItems(IndexPage.prototype.sidebarItems().toArray()))),
           m(
             '.IndexPage-results.sideNavOffset',
-            m('div', { class: 'iconcontainer' }, [m('div', { class: 'icocont' }, m('div', { class: 'titolo1' }, 'Check var sao kê Mặt trận tổ quốc Việt Nam'))]),
+            m('div', { class: 'iconcontainer' }, [m('h2', 'Check var sao kê Mặt trận tổ quốc Việt Nam')]),
             m('.StatementPage', [
-              m('p', 'Lưu ý: dữ liệu chỉ trong phạm vi từ 1/9/2024 đến 10/9/2024. Chúng tôi sẽ cập nhật khi có dữ liệu mới từ MTTQ.'),
+              m(
+                'p',
+                'Lưu ý: dữ liệu được lấy từ 2 nguồn sau: ',
+                m('a', { href: 'https://drive.google.com/file/d/1itY9sSy5uLE2OknDZbG0eqoXT7-uFqRP/view?usp=sharing' }, 'sao kê Vietcombank'),
+                ', ',
+                m('a', { href: 'https://drive.google.com/file/d/1iRsk2BqJ29zAXI1nXJxlxm-xef0jSxJV/view?usp=sharing' }, 'sao kê Vietinbank')
+              ),
               m('input.form-control', {
                 type: 'text',
                 name: 'name',
@@ -89,18 +91,14 @@ export default class StatementPage extends Page {
                   this.data && this.data.length > 0
                     ? this.data.map((value, colIndex) =>
                         m('tr.scm-tr', { key: colIndex }, [
-                          m('td.scm-td', { style: 'text-align:center', 'data-title': 'STT' }, (this.currentPage - 1) * 20 + colIndex + 1),
+                          m('td.scm-td', { 'data-title': 'STT' }, (this.currentPage - 1) * 20 + colIndex + 1),
                           m('td.scm-td', { 'data-title': 'Ngày' }, m.trust(this.highlightText(value._highlightResult.date.value))),
                           m('td.scm-td', { 'data-title': 'Ngân hàng' }, m.trust(this.highlightText(value._highlightResult.bank.value))),
-                          m(
-                            'td.scm-td',
-                            { 'data-title': 'Tiền' },
-                            m.trust(this.highlightText(this.formatCurrency(value._highlightResult.credit.value)))
-                          ),
+                          m('td.scm-td', { 'data-title': 'Tiền' }, m.trust(this.formatCurrency(value.credit))),
                           m('td.scm-td', { 'data-title': 'Chi tiết' }, m.trust(this.highlightText(value._highlightResult.detail.value))),
                         ])
                       )
-                    : m('tr.scm-tr', [m('td.scm-td', { colspan: '5', style: 'text-align:center' }, 'Không có dữ liệu')]),
+                    : m('tr', [m('td', { colspan: '5', style: 'text-align:center' }, 'Không có dữ liệu')]),
                 ]),
               ]),
               m('div', [

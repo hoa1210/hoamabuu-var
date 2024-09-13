@@ -39,9 +39,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var flarum_components_IndexPage__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(flarum_components_IndexPage__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var flarum_helpers_listItems__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! flarum/helpers/listItems */ "flarum/helpers/listItems");
 /* harmony import */ var flarum_helpers_listItems__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(flarum_helpers_listItems__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var flarum_app__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! flarum/app */ "flarum/app");
-/* harmony import */ var flarum_app__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(flarum_app__WEBPACK_IMPORTED_MODULE_6__);
-
 
 
 
@@ -67,9 +64,6 @@ var StatementPage = /*#__PURE__*/function (_Page) {
   };
   _proto.onupdate = function onupdate(vnode) {
     _Page.prototype.onupdate.call(this, vnode);
-  };
-  _proto.head = function head() {
-    return;
   };
   _proto.loadData = /*#__PURE__*/function () {
     var _loadData = (0,_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__["default"])(/*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default().mark(function _callee(key, page) {
@@ -126,16 +120,17 @@ var StatementPage = /*#__PURE__*/function (_Page) {
   _proto.changePage = function changePage(page) {
     if (page < 1 || page > this.totalPages) return;
     this.loadData(this.searchTerm, page);
+    window.scrollTo(0, 0);
   };
   _proto.view = function view() {
     var _this = this;
     return m('.IndexPage', [flarum_components_IndexPage__WEBPACK_IMPORTED_MODULE_4___default().prototype.hero(), m('.container', m('.sideNavContainer', [m('nav.IndexPage-nav.sideNav', m('ul', flarum_helpers_listItems__WEBPACK_IMPORTED_MODULE_5___default()(flarum_components_IndexPage__WEBPACK_IMPORTED_MODULE_4___default().prototype.sidebarItems().toArray()))), m('.IndexPage-results.sideNavOffset', m('div', {
       "class": 'iconcontainer'
-    }, [m('div', {
-      "class": 'icocont'
-    }, m('div', {
-      "class": 'titolo1'
-    }, 'Check var sao kê Mặt trận tổ quốc Việt Nam'))]), m('.StatementPage', [m('p', 'Lưu ý: dữ liệu chỉ trong phạm vi từ 1/9/2024 đến 10/9/2024. Chúng tôi sẽ cập nhật khi có dữ liệu mới từ MTTQ.'), m('input.form-control', {
+    }, [m('h2', 'Check var sao kê Mặt trận tổ quốc Việt Nam')]), m('.StatementPage', [m('p', 'Lưu ý: dữ liệu được lấy từ 2 nguồn sau: ', m('a', {
+      href: 'https://drive.google.com/file/d/1itY9sSy5uLE2OknDZbG0eqoXT7-uFqRP/view?usp=sharing'
+    }, 'sao kê Vietcombank'), ', ', m('a', {
+      href: 'https://drive.google.com/file/d/1iRsk2BqJ29zAXI1nXJxlxm-xef0jSxJV/view?usp=sharing'
+    }, 'sao kê Vietinbank')), m('input.form-control', {
       type: 'text',
       name: 'name',
       placeholder: 'Tìm kiếm theo mã giao dịch, số tiền hoặc chi tiết giao dịch',
@@ -148,7 +143,6 @@ var StatementPage = /*#__PURE__*/function (_Page) {
       return m('tr.scm-tr', {
         key: colIndex
       }, [m('td.scm-td', {
-        style: 'text-align:center',
         'data-title': 'STT'
       }, (_this.currentPage - 1) * 20 + colIndex + 1), m('td.scm-td', {
         'data-title': 'Ngày'
@@ -156,10 +150,10 @@ var StatementPage = /*#__PURE__*/function (_Page) {
         'data-title': 'Ngân hàng'
       }, m.trust(_this.highlightText(value._highlightResult.bank.value))), m('td.scm-td', {
         'data-title': 'Tiền'
-      }, m.trust(_this.highlightText(_this.formatCurrency(value._highlightResult.credit.value)))), m('td.scm-td', {
+      }, m.trust(_this.formatCurrency(value.credit))), m('td.scm-td', {
         'data-title': 'Chi tiết'
       }, m.trust(_this.highlightText(value._highlightResult.detail.value)))]);
-    }) : m('tr.scm-tr', [m('td.scm-td', {
+    }) : m('tr', [m('td', {
       colspan: '5',
       style: 'text-align:center'
     }, 'Không có dữ liệu')])])]), m('div', [this.data && this.data.length > 0 ? m('.pagination', [m('button.pagination-btn', {
@@ -191,6 +185,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var flarum_forum_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! flarum/forum/app */ "flarum/forum/app");
 /* harmony import */ var flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(flarum_forum_app__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_StatementPage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/StatementPage */ "./src/forum/components/StatementPage.js");
+/* harmony import */ var flarum_components_LinkButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! flarum/components/LinkButton */ "flarum/components/LinkButton");
+/* harmony import */ var flarum_components_LinkButton__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(flarum_components_LinkButton__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var flarum_common_extend__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! flarum/common/extend */ "flarum/common/extend");
+/* harmony import */ var flarum_common_extend__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(flarum_common_extend__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var flarum_components_IndexPage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! flarum/components/IndexPage */ "flarum/components/IndexPage");
+/* harmony import */ var flarum_components_IndexPage__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(flarum_components_IndexPage__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
 
 
 flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().initializers.add('hoa1210/hoamabu', function () {
@@ -198,18 +201,13 @@ flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().initializers.add('hoa121
     path: '/sao-ke-tien-ung-ho-bao-yagi',
     component: _components_StatementPage__WEBPACK_IMPORTED_MODULE_1__["default"]
   };
+  (0,flarum_common_extend__WEBPACK_IMPORTED_MODULE_3__.extend)((flarum_components_IndexPage__WEBPACK_IMPORTED_MODULE_4___default().prototype), 'navItems', function (items) {
+    items.add('statementPage', m((flarum_components_LinkButton__WEBPACK_IMPORTED_MODULE_2___default()), {
+      href: flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().route('statementPage'),
+      icon: "fas fa-magic"
+    }, 'Sao kê bão Yagi'), 100);
+  });
 });
-
-/***/ }),
-
-/***/ "flarum/app":
-/*!********************************************!*\
-  !*** external "flarum.core.compat['app']" ***!
-  \********************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = flarum.core.compat['app'];
 
 /***/ }),
 
@@ -224,6 +222,17 @@ module.exports = flarum.core.compat['common/app'];
 
 /***/ }),
 
+/***/ "flarum/common/extend":
+/*!******************************************************!*\
+  !*** external "flarum.core.compat['common/extend']" ***!
+  \******************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = flarum.core.compat['common/extend'];
+
+/***/ }),
+
 /***/ "flarum/components/IndexPage":
 /*!*************************************************************!*\
   !*** external "flarum.core.compat['components/IndexPage']" ***!
@@ -232,6 +241,17 @@ module.exports = flarum.core.compat['common/app'];
 
 "use strict";
 module.exports = flarum.core.compat['components/IndexPage'];
+
+/***/ }),
+
+/***/ "flarum/components/LinkButton":
+/*!**************************************************************!*\
+  !*** external "flarum.core.compat['components/LinkButton']" ***!
+  \**************************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = flarum.core.compat['components/LinkButton'];
 
 /***/ }),
 

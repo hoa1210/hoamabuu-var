@@ -1,185 +1,150 @@
+/* Thông tin form */
 .form-control {
-    display: block;
-    width: 100%;
-    padding: .4375rem 1rem;
-    font-size: .8125rem;
-    font-weight: 400;
-    line-height: 1.25rem;
-    color: #3c4d62;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #dbdfea;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border-radius: 4px;
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    margin-bottom: 15px;
+  display: block;
+  width: 100%;
+  padding: .4375rem 1rem;
+  font-size: .8125rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  color: #3c4d62;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #dbdfea;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 4px;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  margin-bottom: 15px;
 }
 
+/* Bảng dữ liệu */
 .scm-table {
-    width: 100% !important;
-    overflow-x: auto;
-    border-collapse: collapse;
-    border: 1px #ccc solid;
-    color: var(--discussion-title-color);
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+  color: var(--discussion-title-color);
 }
 
-.scm-td,
+.scm-th,
+.scm-td {
+  border: 1px solid #ccc;
+  padding: .5rem;
+  color: var(--discussion-title-color);
+  text-align: left; /* căn chỉnh văn bản bên trái */
+}
+
 .scm-th {
-    border: 1px #ccc solid;
-    padding: .5rem;
-    color: var(--discussion-title-color);
+  background-color: #f9f9f9; /* Màu nền cho tiêu đề cột */
 }
 
-.Form-group {
-    margin: 0 !important;
+.scm-td {
+  background-color: #fff; /* Màu nền cho ô dữ liệu */
 }
 
-
-
-@media only screen and (max-width: 760px),
-(min-device-width: 768px) and (max-device-width: 1024px) {
-
-    .scm-table,
-    .scm-thead,
-    .scm-tbody,
-    .scm-th,
-    .scm-td,
-    .scm-tr {
-        display: block;
-    }
-
-    .scm-thead .scm-tr {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
-
-    .scm-tr {
-        border: 1px solid #ccc;
-    }
-
-    .scm-td {
-        border: none;
-        border-bottom: 1px solid #eee;
-        position: relative;
-        padding-left: 30% !important;
-    }
-
-    .scm-td:before {
-        position: absolute;
-        top: 6px;
-        left: 6px;
-        width: 45%;
-        padding-right: 10px;
-        white-space: nowrap;
-    }
-
-    .scm-td:nth-of-type(1):before {
-        content: attr(data-title);
-    }
-
-    .scm-td:nth-of-type(2):before {
-        content: attr(data-title);
-    }
-
-    .scm-td:nth-of-type(3):before {
-        content: attr(data-title);
-    }
-
-    .scm-td:nth-of-type(4):before {
-        content: attr(data-title);
-    }
-
-    .scm-td:nth-of-type(5):before {
-        content: attr(data-title);
-    }
+.scm-td em {
+  background: #FFE300;
+  padding: 1px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
 }
 
-em {
-    background: #FFE300;
-    padding: 1px;
-    border-radius: var(--border-radius);
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-}
+/* Responsive bảng */
+@media only screen and (max-width: 760px) {
+  .scm-table {
+    display: block;
+    overflow-x: auto;
+  }
 
-/* Container của phân trang */
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0; /* Khoảng cách với nội dung khác */
+  .scm-thead, .scm-tbody, .scm-tr, .scm-th, .scm-td {
+    display: block;
   }
-  
-  /* Nút chuyển trang */
-  .pagination-btn {
-    padding: 8px 12px;
-    margin: 0 5px;
-    border: 1px solid #ddd;
-    background-color: #f5f5f5;
-    cursor: pointer;
-    color: #333;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+
+  .scm-th {
+    display: none;
   }
-  
-  .pagination-btn:hover {
-    background-color: #e0e0e0; /* Màu nền khi hover */
+
+  .scm-tr {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
   }
-  
-  .pagination-btn:disabled {
-    background-color: #f0f0f0;
-    cursor: not-allowed;
-    color: #aaa; /* Màu nhạt cho nút không hoạt động */
+
+  .scm-td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 30%;
   }
-  
-  /* Số trang */
-  .pagination-page {
-    padding: 8px 12px;
-    margin: 0 5px;
-    border: 1px solid #ddd;
-    background-color: #fff;
-    cursor: pointer;
-    color: #333;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .pagination-page:hover {
-    background-color: #f0f0f0; /* Màu nền khi hover */
-  }
-  
-  .pagination-page.active {
-    background-color: #007bff; /* Màu nền của trang hiện tại */
-    color: #fff;
-    border-color: #007bff;
-    cursor: default;
-  }
-  
-  /* Responsive: Đảm bảo phân trang hiển thị tốt trên màn hình nhỏ */
-  @media (max-width: 600px) {
-    .pagination {
-      flex-wrap: wrap; /* Cho phép phân trang xuống dòng khi cần */
-    }
-  
-    .pagination-page,
-    .pagination-btn {
-      margin: 5px 2px; /* Khoảng cách nhỏ hơn cho màn hình nhỏ */
-      padding: 6px 10px;
-    }
-  }
-  .titolo1 {
-    font-family: 'Enriqueta',arial,serif;
-    line-height: 1.25;
-    margin: 0 0 10px;
-    font-size: 40px;
+
+  .scm-td:before {
+    content: attr(data-title);
+    position: absolute;
+    left: 0;
+    padding-left: 10px;
     font-weight: bold;
-    text-align: center;
-    background-color: #667c99;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: rgba(255,255,255,0.5) 0px 3px 3px;
   }
+}
+
+/* Phân trang */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.pagination-btn {
+  padding: 8px 12px;
+  margin: 0 5px;
+  border: 1px solid #ddd;
+  background-color: #f5f5f5;
+  cursor: pointer;
+  color: #333;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.pagination-btn:disabled {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+  color: #aaa;
+}
+
+.pagination-page {
+  padding: 8px 12px;
+  margin: 0 5px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  cursor: pointer;
+  color: #333;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-page:hover {
+  background-color: #f0f0f0;
+}
+
+.pagination-page.active {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+  cursor: default;
+}
+
+/* Responsive phân trang */
+@media (max-width: 600px) {
+  .pagination {
+    flex-wrap: wrap;
+  }
+
+  .pagination-page,
+  .pagination-btn {
+    margin: 5px 2px;
+    padding: 6px 10px;
+  }
+}
