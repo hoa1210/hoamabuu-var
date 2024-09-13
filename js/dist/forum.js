@@ -39,6 +39,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var flarum_components_IndexPage__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(flarum_components_IndexPage__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var flarum_helpers_listItems__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! flarum/helpers/listItems */ "flarum/helpers/listItems");
 /* harmony import */ var flarum_helpers_listItems__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(flarum_helpers_listItems__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var flarum_app__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! flarum/app */ "flarum/app");
+/* harmony import */ var flarum_app__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(flarum_app__WEBPACK_IMPORTED_MODULE_6__);
+
 
 
 
@@ -82,7 +85,7 @@ var StatementPage = /*#__PURE__*/function (_Page) {
             }
             _context.prev = 2;
             _context.next = 5;
-            return fetch("http://localhost:8099?query=" + key + "&page=" + page);
+            return fetch("https://checkvar.hotroit.org/?query=" + key + "&page=" + page);
           case 5:
             response = _context.sent;
             _context.next = 8;
@@ -92,7 +95,7 @@ var StatementPage = /*#__PURE__*/function (_Page) {
             this.data = data.hits;
             this.searchTerm = key;
             this.currentPage = page;
-            this.totalPages = data.nbPages; // Cập nhật tổng số trang
+            this.totalPages = data.nbPages;
             m.redraw();
             _context.next = 19;
             break;
@@ -196,6 +199,17 @@ flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().initializers.add('hoa121
     component: _components_StatementPage__WEBPACK_IMPORTED_MODULE_1__["default"]
   };
 });
+
+/***/ }),
+
+/***/ "flarum/app":
+/*!********************************************!*\
+  !*** external "flarum.core.compat['app']" ***!
+  \********************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = flarum.core.compat['app'];
 
 /***/ }),
 

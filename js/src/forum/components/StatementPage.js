@@ -1,6 +1,7 @@
 import Page from 'flarum/components/Page';
 import IndexPage from 'flarum/components/IndexPage';
 import listItems from 'flarum/helpers/listItems';
+import app from 'flarum/app';
 
 export default class StatementPage extends Page {
   oninit(vnode) {
@@ -26,13 +27,13 @@ export default class StatementPage extends Page {
 
   async loadData(key = '', page = 1) {
     try {
-      const response = await fetch(`http://localhost:8099?query=${key}&page=${page}`);
+      const response = await fetch(`https://checkvar.hotroit.org/?query=${key}&page=${page}`);
       const data = await response.json();
 
       this.data = data.hits;
       this.searchTerm = key;
       this.currentPage = page;
-      this.totalPages = data.nbPages; // Cập nhật tổng số trang
+      this.totalPages = data.nbPages;
       m.redraw();
     } catch (error) {
       console.error('Failed to load data', error);

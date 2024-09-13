@@ -169,4 +169,17 @@ em {
       padding: 6px 10px;
     }
   }
-  
+  .titolo1 {
+    font-family: 'Enriqueta',arial,serif;
+    line-height: 1.25;
+    margin: 0 0 10px;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #667c99;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: rgba(255,255,255,0.5) 0px 3px 3px;
+  }
