@@ -1,0 +1,55 @@
+{
+    "name": "hoa1210/hoamabu",
+    "description": "I Love You Pac Pac",
+    "keywords": [
+        "flarum"
+    ],
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^1.2.0"
+    },
+    "authors": [
+        {
+            "name": "HoaDepTrai",
+            "email": "luonghoa121002@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Hoa1210\\Hoamabu\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Hoamabu",
+            "category": "",
+            "icon": {
+                "name": "fas fa-magic",
+                "color": "#d83e3e",
+                "backgroundColor": "#ffffffed"
+            }
+        },
+        "flarum-cli": {
+            "modules": {
+                "admin": true,
+                "forum": true,
+                "js": true,
+                "jsCommon": true,
+                "css": true,
+                "locale": true,
+                "gitConf": true,
+                "githubActions": true,
+                "prettier": true,
+                "typescript": false,
+                "bundlewatch": false,
+                "backendTesting": false,
+                "editorConfig": true,
+                "styleci": true
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
