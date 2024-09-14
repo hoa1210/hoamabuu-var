@@ -79,7 +79,7 @@ var StatementPage = /*#__PURE__*/function (_Page) {
             }
             _context.prev = 2;
             _context.next = 5;
-            return fetch("https://checkvar.hotroit.org/?query=" + key + "&page=" + page);
+            return fetch("http://localhost:8099/?query=" + key + "&page=" + page);
           case 5:
             response = _context.sent;
             _context.next = 8;
