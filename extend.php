@@ -26,11 +26,11 @@ return [
             //         unset($document->head[$key]);
             //     }
             // }
-            $document->head[] = '<meta property="og:title" content="Check var sao kê Mặt trận tổ quốc Việt Nam ">
-            <meta property="og:image" content="https://imgur.com/UAscxDr">
-            <meta property="og:description" content="Tìm kiếm dữ liệu sao kê từ 12000 PDF của Mặt Trận Tổ Quốc Việt Nam">
-            <meta property="og:url" content="https://hotroit.org">
-            <meta property="og:type" content="website">';
+            // $document->head[] = '<meta property="og:title" content="Check var sao kê Mặt trận tổ quốc Việt Nam ">
+            // <meta property="og:image" content="https://imgur.com/UAscxDr">
+            // <meta property="og:description" content="Tìm kiếm dữ liệu sao kê từ 12000 PDF của Mặt Trận Tổ Quốc Việt Nam">
+            // <meta property="og:url" content="https://hotroit.org">
+            // <meta property="og:type" content="website">';
         }),
 
     (new Extend\Frontend('admin'))
