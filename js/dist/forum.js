@@ -220,7 +220,6 @@ flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().initializers.add('hoa121
         onclick: function onclick() {
           var userId = (flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().current).data.user.data.id;
           if (userId) {
-            console.log(userId);
             if (typeof jqac !== 'undefined' && typeof jqac.arrowchat !== 'undefined') {
               jqac.arrowchat.chatWith(userId);
             } else {

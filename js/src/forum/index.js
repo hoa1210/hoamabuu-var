@@ -32,7 +32,6 @@ app.initializers.add('hoa1210/hoamabu', () => {
             onclick: () => {
               const userId = app.current.data.user.data.id;
               if (userId) {
-                console.log(userId);
                 if (typeof jqac !== 'undefined' && typeof jqac.arrowchat !== 'undefined') {
                   jqac.arrowchat.chatWith(userId);
                 } else {
