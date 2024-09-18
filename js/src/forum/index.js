@@ -28,7 +28,7 @@ app.initializers.add('hoa1210/hoamabu', () => {
         'profileButton',
         Button.component(
           {
-            className: 'Button Button--primary',
+            className: 'chat-button',
             onclick: () => {
               const userId = app.current.data.user.data.id;
               if (userId) {
@@ -42,7 +42,10 @@ app.initializers.add('hoa1210/hoamabu', () => {
               }
             },
           },
-          'Liên hệ ngay'
+          [
+            <i class="fas fa-comment-dots"></i>,
+            <b>Nhắn tin</b>
+          ]
         )
       );
     }

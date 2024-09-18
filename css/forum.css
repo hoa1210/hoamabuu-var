@@ -148,3 +148,27 @@
     padding: 6px 10px;
   }
 }
+
+
+.chat-button {
+  display: inline-flex;
+  align-items: center;
+  background-color: #0084ff; 
+  color: white;
+  border-radius: 5px; 
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); 
+  transition: background-color 0.3s ease;
+  border: none;
+}
+
+.chat-button i {
+  margin-right: 8px; 
+  font-size: 18px; 
+}
+
+.chat-button:hover {
+  background-color: #006dbf; 
+}

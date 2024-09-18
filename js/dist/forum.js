@@ -216,7 +216,7 @@ flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().initializers.add('hoa121
   (0,flarum_common_extend__WEBPACK_IMPORTED_MODULE_3__.extend)((flarum_components_UserCard__WEBPACK_IMPORTED_MODULE_5___default().prototype), 'infoItems', function (items) {
     if ((flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().current) && (flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().current).data && (flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().current).data.user) {
       items.add('profileButton', flarum_common_components_Button__WEBPACK_IMPORTED_MODULE_6___default().component({
-        className: 'Button Button--primary',
+        className: 'chat-button',
         onclick: function onclick() {
           var userId = (flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().current).data.user.data.id;
           if (userId) {
@@ -229,7 +229,9 @@ flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().initializers.add('hoa121
             console.error('ArrowChat is not loaded or initialized');
           }
         }
-      }, 'Liên hệ ngay'));
+      }, [m("i", {
+        "class": "fas fa-comment-dots"
+      }), m("b", null, "Nh\u1EAFn tin")]));
     }
   });
 });
