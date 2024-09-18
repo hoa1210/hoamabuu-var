@@ -214,6 +214,7 @@ flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().initializers.add('hoa121
     }, 'Sao kê bão Yagi'), 100);
   });
   (0,flarum_common_extend__WEBPACK_IMPORTED_MODULE_3__.extend)((flarum_components_UserCard__WEBPACK_IMPORTED_MODULE_5___default().prototype), 'infoItems', function (items) {
+    console.log((flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default()));
     if ((flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().current) && (flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().current).data && (flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().current).data.user) {
       items.add('profileButton', flarum_common_components_Button__WEBPACK_IMPORTED_MODULE_6___default().component({
         className: 'chat-button',
