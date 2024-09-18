@@ -214,12 +214,24 @@ flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().initializers.add('hoa121
     }, 'Sao kê bão Yagi'), 100);
   });
   (0,flarum_common_extend__WEBPACK_IMPORTED_MODULE_3__.extend)((flarum_components_UserCard__WEBPACK_IMPORTED_MODULE_5___default().prototype), 'infoItems', function (items) {
-    items.add('profileButton', flarum_common_components_Button__WEBPACK_IMPORTED_MODULE_6___default().component({
-      className: 'Button Button--primary ',
-      onclick: function onclick() {
-        jqac.arrowchat.chatWith((flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().current).data.user.data.id);
-      }
-    }, 'Liên hệ ngay'));
+    if ((flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().current) && (flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().current).data && (flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().current).data.user) {
+      items.add('profileButton', flarum_common_components_Button__WEBPACK_IMPORTED_MODULE_6___default().component({
+        className: 'Button Button--primary',
+        onclick: function onclick() {
+          var userId = (flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().current).data.user.data.id;
+          if (userId) {
+            console.log(userId);
+            if (typeof jqac !== 'undefined' && typeof jqac.arrowchat !== 'undefined') {
+              jqac.arrowchat.chatWith(userId);
+            } else {
+              console.error('User ID not available');
+            }
+          } else {
+            console.error('ArrowChat is not loaded or initialized');
+          }
+        }
+      }, 'Liên hệ ngay'));
+    }
   });
 });
 

@@ -6,7 +6,6 @@ import IndexPage from 'flarum/components/IndexPage';
 import UserCard from 'flarum/components/UserCard';
 import Button from 'flarum/common/components/Button';
 
-
 app.initializers.add('hoa1210/hoamabu', () => {
   app.routes.statementPage = {
     path: '/sao-ke-tien-ung-ho-bao-yagi',
@@ -24,18 +23,29 @@ app.initializers.add('hoa1210/hoamabu', () => {
   });
 
   extend(UserCard.prototype, 'infoItems', function (items) {
-    items.add(
-      'profileButton',
-      Button.component(
-        {
-          className: 'Button Button--primary ',
-          onclick: () => {
-            jqac.arrowchat.chatWith(app.current.data.user.data.id);
+    if (app.current && app.current.data && app.current.data.user) {
+      items.add(
+        'profileButton',
+        Button.component(
+          {
+            className: 'Button Button--primary',
+            onclick: () => {
+              const userId = app.current.data.user.data.id;
+              if (userId) {
+                console.log(userId);
+                if (typeof jqac !== 'undefined' && typeof jqac.arrowchat !== 'undefined') {
+                  jqac.arrowchat.chatWith(userId);
+                } else {
+                  console.error('User ID not available');
+                }
+              } else {
+                console.error('ArrowChat is not loaded or initialized');
+              }
+            },
           },
-        },
-        'Liên hệ ngay'
-      )
-    );
+          'Liên hệ ngay'
+        )
+      );
+    }
   });
-
 });
