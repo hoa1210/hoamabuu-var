@@ -23,7 +23,6 @@ app.initializers.add('hoa1210/hoamabu', () => {
   });
 
   extend(UserCard.prototype, 'infoItems', function (items) {
-    console.log(app);
     
     if (app.current && app.current.data && app.current.data.user) {
       items.add(
