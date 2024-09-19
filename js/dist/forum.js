@@ -209,36 +209,39 @@ __webpack_require__.r(__webpack_exports__);
 
 
 flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().initializers.add('hoa1210/hoamabu', function () {
+  // Define a route for the StatementPage component
   (flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().routes).statementPage = {
     path: '/sao-ke-tien-ung-ho-bao-yagi',
     component: _components_StatementPage__WEBPACK_IMPORTED_MODULE_1__["default"]
   };
+
+  // Extend IndexPage to add a link to the navigation items
   (0,flarum_common_extend__WEBPACK_IMPORTED_MODULE_3__.extend)((flarum_components_IndexPage__WEBPACK_IMPORTED_MODULE_4___default().prototype), 'navItems', function (items) {
     items.add('statementPage', m((flarum_components_LinkButton__WEBPACK_IMPORTED_MODULE_2___default()), {
       href: flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().route('statementPage'),
       icon: "fas fa-magic"
     }, 'Sao kê bão Yagi'), 100);
   });
+
+  // Extend UserCard to add a chat button
   (0,flarum_common_extend__WEBPACK_IMPORTED_MODULE_3__.extend)((flarum_components_UserCard__WEBPACK_IMPORTED_MODULE_5___default().prototype), 'infoItems', function (items) {
     var _app$current;
-    var currentUser = (_app$current = (flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().current)) == null || (_app$current = _app$current.data) == null ? void 0 : _app$current.user;
-    console.log((flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default()));
+    var currentUserId = (_app$current = (flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().current)) == null || (_app$current = _app$current.data) == null || (_app$current = _app$current.user) == null || (_app$current = _app$current.data) == null ? void 0 : _app$current.id;
+    var userId = currentUserId || this.attrs.user.data.id;
     items.add('chatButton', flarum_common_components_Button__WEBPACK_IMPORTED_MODULE_6___default().component({
       className: 'chat-button padding-btn-chat',
       onclick: function onclick() {
+        var _jqac;
+        if (!userId) {
+          console.error('User ID not available');
+          return;
+        }
         if (!(flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().session).user) {
           flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().modal.show((flarum_forum_components_LogInModal__WEBPACK_IMPORTED_MODULE_8___default()));
+        } else if (typeof ((_jqac = jqac) == null ? void 0 : _jqac.arrowchat) !== 'undefined') {
+          jqac.arrowchat.chatWith(userId);
         } else {
-          var userId = currentUser.data.id;
-          if (userId) {
-            if (typeof jqac !== 'undefined' && typeof jqac.arrowchat !== 'undefined') {
-              jqac.arrowchat.chatWith(userId);
-            } else {
-              console.error('ArrowChat is not loaded or initialized');
-            }
-          } else {
-            console.error('User ID not available');
-          }
+          console.error('ArrowChat is not loaded or initialized');
         }
       }
     }, [m("i", {
@@ -247,21 +250,25 @@ flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().initializers.add('hoa121
       style: "margin-left: 5px;"
     }, "Nh\u1EAFn tin")]));
   });
+
+  // Extend PostUser to add a chat button
   (0,flarum_common_extend__WEBPACK_IMPORTED_MODULE_3__.extend)((flarum_components_PostUser__WEBPACK_IMPORTED_MODULE_7___default().prototype), 'view', function (vnode) {
-    var _post$data;
-    var post = this.attrs.post;
-    var userId = post == null || (_post$data = post.data) == null || (_post$data = _post$data.relationships) == null || (_post$data = _post$data.user) == null || (_post$data = _post$data.data) == null ? void 0 : _post$data.id;
+    var _this$attrs$post;
+    var userId = (_this$attrs$post = this.attrs.post) == null || (_this$attrs$post = _this$attrs$post.data) == null || (_this$attrs$post = _this$attrs$post.relationships) == null || (_this$attrs$post = _this$attrs$post.user) == null || (_this$attrs$post = _this$attrs$post.data) == null ? void 0 : _this$attrs$post.id;
     vnode.children.push(m('button', {
       className: 'chat-button',
       onclick: function onclick() {
+        var _jqac2;
+        if (!userId) {
+          console.error('User ID not available');
+          return;
+        }
         if (!(flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().session).user) {
           flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().modal.show((flarum_forum_components_LogInModal__WEBPACK_IMPORTED_MODULE_8___default()));
+        } else if (typeof ((_jqac2 = jqac) == null ? void 0 : _jqac2.arrowchat) !== 'undefined') {
+          jqac.arrowchat.chatWith(userId);
         } else {
-          if (typeof jqac !== 'undefined' && typeof jqac.arrowchat !== 'undefined') {
-            jqac.arrowchat.chatWith(userId);
-          } else {
-            console.error('ArrowChat is not loaded or initialized');
-          }
+          console.error('ArrowChat is not loaded or initialized');
         }
       },
       style: {

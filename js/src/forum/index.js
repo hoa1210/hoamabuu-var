@@ -9,11 +9,13 @@ import PostUser from 'flarum/components/PostUser';
 import LogInModal from 'flarum/forum/components/LogInModal';
 
 app.initializers.add('hoa1210/hoamabu', () => {
+  // Define a route for the StatementPage component
   app.routes.statementPage = {
     path: '/sao-ke-tien-ung-ho-bao-yagi',
     component: StatementPage,
   };
 
+  // Extend IndexPage to add a link to the navigation items
   extend(IndexPage.prototype, 'navItems', (items) => {
     items.add(
       'statementPage',
@@ -24,30 +26,28 @@ app.initializers.add('hoa1210/hoamabu', () => {
     );
   });
 
+  // Extend UserCard to add a chat button
   extend(UserCard.prototype, 'infoItems', function (items) {
-    const currentUser = app.current?.data?.user;
+    const currentUserId = app.current?.data?.user?.data?.id;
+    const userId = currentUserId || this.attrs.user.data.id;
 
-    console.log(app);
-    
     items.add(
       'chatButton',
       Button.component(
         {
           className: 'chat-button padding-btn-chat',
           onclick: () => {
+            if (!userId) {
+              console.error('User ID not available');
+              return;
+            }
+
             if (!app.session.user) {
               app.modal.show(LogInModal);
+            } else if (typeof jqac?.arrowchat !== 'undefined') {
+              jqac.arrowchat.chatWith(userId);
             } else {
-              const userId = currentUser.data.id;
-              if (userId) {
-                if (typeof jqac !== 'undefined' && typeof jqac.arrowchat !== 'undefined') {
-                  jqac.arrowchat.chatWith(userId);
-                } else {
-                  console.error('ArrowChat is not loaded or initialized');
-                }
-              } else {
-                console.error('User ID not available');
-              }
+              console.error('ArrowChat is not loaded or initialized');
             }
           },
         },
@@ -56,9 +56,9 @@ app.initializers.add('hoa1210/hoamabu', () => {
     );
   });
 
+  // Extend PostUser to add a chat button
   extend(PostUser.prototype, 'view', function (vnode) {
-    const post = this.attrs.post;
-    const userId = post?.data?.relationships?.user?.data?.id;
+    const userId = this.attrs.post?.data?.relationships?.user?.data?.id;
 
     vnode.children.push(
       m(
@@ -66,14 +66,17 @@ app.initializers.add('hoa1210/hoamabu', () => {
         {
           className: 'chat-button',
           onclick: () => {
+            if (!userId) {
+              console.error('User ID not available');
+              return;
+            }
+
             if (!app.session.user) {
               app.modal.show(LogInModal);
+            } else if (typeof jqac?.arrowchat !== 'undefined') {
+              jqac.arrowchat.chatWith(userId);
             } else {
-              if (typeof jqac !== 'undefined' && typeof jqac.arrowchat !== 'undefined') {
-                jqac.arrowchat.chatWith(userId);
-              } else {
-                console.error('ArrowChat is not loaded or initialized');
-              }
+              console.error('ArrowChat is not loaded or initialized');
             }
           },
           style: { marginLeft: '10px' },
