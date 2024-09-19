@@ -223,7 +223,7 @@ flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().initializers.add('hoa121
     var _app$current;
     var currentUser = (_app$current = (flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().current)) == null || (_app$current = _app$current.data) == null ? void 0 : _app$current.user;
     items.add('chatButton', flarum_common_components_Button__WEBPACK_IMPORTED_MODULE_6___default().component({
-      className: 'chat-button',
+      className: 'chat-button padding-btn-chat',
       onclick: function onclick() {
         if (!(flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().session).user) {
           flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().modal.show((flarum_forum_components_LogInModal__WEBPACK_IMPORTED_MODULE_8___default()));

@@ -171,3 +171,7 @@
 .chat-button:hover {
   background-color: #006dbf; 
 }
+
+.padding-btn-chat {
+  padding: 5px 10px !important;
+}

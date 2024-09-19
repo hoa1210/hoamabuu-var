@@ -31,7 +31,7 @@ app.initializers.add('hoa1210/hoamabu', () => {
       'chatButton',
       Button.component(
         {
-          className: 'chat-button',
+          className: 'chat-button padding-btn-chat',
           onclick: () => {
             if (!app.session.user) {
               app.modal.show(LogInModal);
