@@ -5,6 +5,8 @@ import { extend } from 'flarum/common/extend';
 import IndexPage from 'flarum/components/IndexPage';
 import UserCard from 'flarum/components/UserCard';
 import Button from 'flarum/common/components/Button';
+import PostUser from 'flarum/components/PostUser';
+import LogInModal from 'flarum/forum/components/LogInModal';
 
 app.initializers.add('hoa1210/hoamabu', () => {
   app.routes.statementPage = {
@@ -23,32 +25,59 @@ app.initializers.add('hoa1210/hoamabu', () => {
   });
 
   extend(UserCard.prototype, 'infoItems', function (items) {
-    
-    if (app.current && app.current.data && app.current.data.user) {
-      items.add(
-        'profileButton',
-        Button.component(
-          {
-            className: 'chat-button',
-            onclick: () => {
-              const userId = app.current.data.user.data.id;
+    const currentUser = app.current?.data?.user;
+
+    items.add(
+      'chatButton',
+      Button.component(
+        {
+          className: 'chat-button',
+          onclick: () => {
+            if (!app.session.user) {
+              app.modal.show(LogInModal);
+            } else {
+              const userId = currentUser.data.id;
               if (userId) {
                 if (typeof jqac !== 'undefined' && typeof jqac.arrowchat !== 'undefined') {
                   jqac.arrowchat.chatWith(userId);
                 } else {
-                  console.error('User ID not available');
+                  console.error('ArrowChat is not loaded or initialized');
                 }
+              } else {
+                console.error('User ID not available');
+              }
+            }
+          },
+        },
+        [<i class="fas fa-comment-dots"></i>, <b>Nhắn tin</b>]
+      )
+    );
+  });
+
+  extend(PostUser.prototype, 'view', function (vnode) {
+    const post = this.attrs.post;
+    const userId = post?.data?.relationships?.user?.data?.id;
+
+    vnode.children.push(
+      m(
+        'button',
+        {
+          className: 'chat-button',
+          onclick: () => {
+            if (!app.session.user) {
+              app.modal.show(LogInModal);
+            } else {
+              if (typeof jqac !== 'undefined' && typeof jqac.arrowchat !== 'undefined') {
+                jqac.arrowchat.chatWith(userId);
               } else {
                 console.error('ArrowChat is not loaded or initialized');
               }
-            },
+            }
           },
-          [
-            <i class="fas fa-comment-dots"></i>,
-            <b>Nhắn tin</b>
-          ]
-        )
-      );
-    }
+          style: { marginLeft: '10px' },
+        },
+        [<i class="fas fa-comment-dots"></i>, <b>Nhắn tin</b>]
+      )
+    );
   });
 });

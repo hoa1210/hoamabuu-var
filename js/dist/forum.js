@@ -195,6 +195,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var flarum_components_UserCard__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(flarum_components_UserCard__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var flarum_common_components_Button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! flarum/common/components/Button */ "flarum/common/components/Button");
 /* harmony import */ var flarum_common_components_Button__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(flarum_common_components_Button__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var flarum_components_PostUser__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! flarum/components/PostUser */ "flarum/components/PostUser");
+/* harmony import */ var flarum_components_PostUser__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(flarum_components_PostUser__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var flarum_forum_components_LogInModal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! flarum/forum/components/LogInModal */ "flarum/forum/components/LogInModal");
+/* harmony import */ var flarum_forum_components_LogInModal__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(flarum_forum_components_LogInModal__WEBPACK_IMPORTED_MODULE_8__);
+
+
 
 
 
@@ -214,25 +220,53 @@ flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().initializers.add('hoa121
     }, 'Sao kê bão Yagi'), 100);
   });
   (0,flarum_common_extend__WEBPACK_IMPORTED_MODULE_3__.extend)((flarum_components_UserCard__WEBPACK_IMPORTED_MODULE_5___default().prototype), 'infoItems', function (items) {
-    if ((flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().current) && (flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().current).data && (flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().current).data.user) {
-      items.add('profileButton', flarum_common_components_Button__WEBPACK_IMPORTED_MODULE_6___default().component({
-        className: 'chat-button',
-        onclick: function onclick() {
-          var userId = (flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().current).data.user.data.id;
+    var _app$current;
+    var currentUser = (_app$current = (flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().current)) == null || (_app$current = _app$current.data) == null ? void 0 : _app$current.user;
+    items.add('chatButton', flarum_common_components_Button__WEBPACK_IMPORTED_MODULE_6___default().component({
+      className: 'chat-button',
+      onclick: function onclick() {
+        if (!(flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().session).user) {
+          flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().modal.show((flarum_forum_components_LogInModal__WEBPACK_IMPORTED_MODULE_8___default()));
+        } else {
+          var userId = currentUser.data.id;
           if (userId) {
             if (typeof jqac !== 'undefined' && typeof jqac.arrowchat !== 'undefined') {
               jqac.arrowchat.chatWith(userId);
             } else {
-              console.error('User ID not available');
+              console.error('ArrowChat is not loaded or initialized');
             }
+          } else {
+            console.error('User ID not available');
+          }
+        }
+      }
+    }, [m("i", {
+      "class": "fas fa-comment-dots"
+    }), m("b", null, "Nh\u1EAFn tin")]));
+  });
+  (0,flarum_common_extend__WEBPACK_IMPORTED_MODULE_3__.extend)((flarum_components_PostUser__WEBPACK_IMPORTED_MODULE_7___default().prototype), 'view', function (vnode) {
+    var _post$data;
+    var post = this.attrs.post;
+    var userId = post == null || (_post$data = post.data) == null || (_post$data = _post$data.relationships) == null || (_post$data = _post$data.user) == null || (_post$data = _post$data.data) == null ? void 0 : _post$data.id;
+    vnode.children.push(m('button', {
+      className: 'chat-button',
+      onclick: function onclick() {
+        if (!(flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().session).user) {
+          flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().modal.show((flarum_forum_components_LogInModal__WEBPACK_IMPORTED_MODULE_8___default()));
+        } else {
+          if (typeof jqac !== 'undefined' && typeof jqac.arrowchat !== 'undefined') {
+            jqac.arrowchat.chatWith(userId);
           } else {
             console.error('ArrowChat is not loaded or initialized');
           }
         }
-      }, [m("i", {
-        "class": "fas fa-comment-dots"
-      }), m("b", null, "Nh\u1EAFn tin")]));
-    }
+      },
+      style: {
+        marginLeft: '10px'
+      }
+    }, [m("i", {
+      "class": "fas fa-comment-dots"
+    }), m("b", null, "Nh\u1EAFn tin")]));
   });
 });
 
@@ -304,6 +338,17 @@ module.exports = flarum.core.compat['components/Page'];
 
 /***/ }),
 
+/***/ "flarum/components/PostUser":
+/*!************************************************************!*\
+  !*** external "flarum.core.compat['components/PostUser']" ***!
+  \************************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = flarum.core.compat['components/PostUser'];
+
+/***/ }),
+
 /***/ "flarum/components/UserCard":
 /*!************************************************************!*\
   !*** external "flarum.core.compat['components/UserCard']" ***!
@@ -323,6 +368,17 @@ module.exports = flarum.core.compat['components/UserCard'];
 
 "use strict";
 module.exports = flarum.core.compat['forum/app'];
+
+/***/ }),
+
+/***/ "flarum/forum/components/LogInModal":
+/*!********************************************************************!*\
+  !*** external "flarum.core.compat['forum/components/LogInModal']" ***!
+  \********************************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = flarum.core.compat['forum/components/LogInModal'];
 
 /***/ }),
 
