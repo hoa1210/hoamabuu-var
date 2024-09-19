@@ -49,7 +49,7 @@ app.initializers.add('hoa1210/hoamabu', () => {
             }
           },
         },
-        [<i class="fas fa-comment-dots"></i>, <span>Nhắn tin</span>]
+        [<i class="fas fa-comment-dots"></i>, <span style="margin-left: 5px;">Nhắn tin</span>]
       )
     );
   });
