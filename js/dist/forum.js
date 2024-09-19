@@ -216,12 +216,15 @@ flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().initializers.add('hoa121
   };
 
   // Extend IndexPage to add a link to the navigation items
-  (0,flarum_common_extend__WEBPACK_IMPORTED_MODULE_3__.extend)((flarum_components_IndexPage__WEBPACK_IMPORTED_MODULE_4___default().prototype), 'navItems', function (items) {
-    items.add('statementPage', m((flarum_components_LinkButton__WEBPACK_IMPORTED_MODULE_2___default()), {
-      href: flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().route('statementPage'),
-      icon: "fas fa-magic"
-    }, 'Sao kê bão Yagi'), 100);
-  });
+  // extend(IndexPage.prototype, 'navItems', (items) => {
+  //   items.add(
+  //     'statementPage',
+  //     <LinkButton href={app.route('statementPage')} icon="fas fa-magic">
+  //       {'Sao kê bão Yagi'}
+  //     </LinkButton>,
+  //     100
+  //   );
+  // });
 
   // Extend UserCard to add a chat button
   (0,flarum_common_extend__WEBPACK_IMPORTED_MODULE_3__.extend)((flarum_components_UserCard__WEBPACK_IMPORTED_MODULE_5___default().prototype), 'infoItems', function (items) {

@@ -16,15 +16,15 @@ app.initializers.add('hoa1210/hoamabu', () => {
   };
 
   // Extend IndexPage to add a link to the navigation items
-  extend(IndexPage.prototype, 'navItems', (items) => {
-    items.add(
-      'statementPage',
-      <LinkButton href={app.route('statementPage')} icon="fas fa-magic">
-        {'Sao kê bão Yagi'}
-      </LinkButton>,
-      100
-    );
-  });
+  // extend(IndexPage.prototype, 'navItems', (items) => {
+  //   items.add(
+  //     'statementPage',
+  //     <LinkButton href={app.route('statementPage')} icon="fas fa-magic">
+  //       {'Sao kê bão Yagi'}
+  //     </LinkButton>,
+  //     100
+  //   );
+  // });
 
   // Extend UserCard to add a chat button
   extend(UserCard.prototype, 'infoItems', function (items) {
