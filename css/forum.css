@@ -157,7 +157,7 @@
   color: white;
   border-radius: 5px; 
   padding: 5px;
-  font-size: 14px;
+  font-size: 12px;
   cursor: pointer;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); 
   transition: background-color 0.3s ease;
@@ -173,5 +173,5 @@
 }
 
 .padding-btn-chat {
-  padding: 5px 10px !important;
+  padding: 3px 8px !important;
 }
