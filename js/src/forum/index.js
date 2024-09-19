@@ -27,6 +27,8 @@ app.initializers.add('hoa1210/hoamabu', () => {
   extend(UserCard.prototype, 'infoItems', function (items) {
     const currentUser = app.current?.data?.user;
 
+    console.log(app);
+    
     items.add(
       'chatButton',
       Button.component(
