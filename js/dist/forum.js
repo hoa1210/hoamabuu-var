@@ -242,7 +242,7 @@ flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().initializers.add('hoa121
       }
     }, [m("i", {
       "class": "fas fa-comment-dots"
-    }), m("b", null, "Nh\u1EAFn tin")]));
+    }), m("span", null, "Nh\u1EAFn tin")]));
   });
   (0,flarum_common_extend__WEBPACK_IMPORTED_MODULE_3__.extend)((flarum_components_PostUser__WEBPACK_IMPORTED_MODULE_7___default().prototype), 'view', function (vnode) {
     var _post$data;
@@ -266,7 +266,7 @@ flarum_forum_app__WEBPACK_IMPORTED_MODULE_0___default().initializers.add('hoa121
       }
     }, [m("i", {
       "class": "fas fa-comment-dots"
-    }), m("b", null, "Nh\u1EAFn tin")]));
+    })]));
   });
 });
 

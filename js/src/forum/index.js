@@ -49,7 +49,7 @@ app.initializers.add('hoa1210/hoamabu', () => {
             }
           },
         },
-        [<i class="fas fa-comment-dots"></i>, <b>Nhắn tin</b>]
+        [<i class="fas fa-comment-dots"></i>, <span>Nhắn tin</span>]
       )
     );
   });
@@ -76,7 +76,7 @@ app.initializers.add('hoa1210/hoamabu', () => {
           },
           style: { marginLeft: '10px' },
         },
-        [<i class="fas fa-comment-dots"></i>, <b>Nhắn tin</b>]
+        [<i class="fas fa-comment-dots"></i>]
       )
     );
   });
