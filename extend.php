@@ -12,8 +12,7 @@
 namespace Hoa1210\Hoamabu;
 
 use Flarum\Extend;
-use Flarum\Frontend\Document;
-use Psr\Http\Message\ServerRequestInterface as Request;
+use Hoa1210\Hoamabu\RememberMeByDefault;
 
 return [
     (new Extend\Frontend('forum'))
@@ -25,4 +24,5 @@ return [
         ->js(__DIR__ . '/js/dist/admin.js'),
 
     new Extend\Locales(__DIR__ . '/locale'),
+    new RememberMeByDefault(),
 ];

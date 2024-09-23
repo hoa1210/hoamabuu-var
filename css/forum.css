@@ -175,3 +175,8 @@
 .padding-btn-chat {
   padding: 3px 8px !important;
 }
+
+/* tắt checkbox ở màn login */
+.LogInModal label.checkbox {
+  display: none;
+}
